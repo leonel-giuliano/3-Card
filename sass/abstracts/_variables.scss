@@ -1,0 +1,46 @@
+$color: (
+    primary: (
+        orange: hsl(31, 77%, 52%),
+        cyan: hsl(184, 100%, 22%),
+        dark-cyan: hsl(179, 100%, 13%),
+    ),
+    
+    neutral: (
+        white: hsla(0, 0%, 100%, 0.75),
+        gray: hsl(0, 0%, 95%),
+    ),
+);
+
+$font: (
+    size: 15px,
+
+    family: (
+        primary: 'Big Shoulders Display',
+        secondary: 'Lexend Deca',
+    ),
+
+    weight: (
+        regular: 400,
+        bold: 700,
+    ),
+);
+
+$mobile-max-width: 600px;
+$card-mobile: 330px, 1330px;
+$mobile-body-margin: 1rem;
+
+$card-desktop: 920px, 500px;
+
+$card-size: (
+    mobile: (
+        width: 330px,
+        height: 1330px,
+    ),
+
+    desktop: (
+        width: 920px,
+        height: 500px,
+    ),
+);
+
+$primary-loop: map-get($color, primary);

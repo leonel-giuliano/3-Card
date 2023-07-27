@@ -1,0 +1,32 @@
+@use 'variables';
+@use 'functions';
+
+@use 'sass:map';
+
+@mixin media() {
+    @media only screen and (
+        width > functions.rem(variables.$mobile-max-width)
+    ) { @content; }
+}
+
+@mixin device-card($device) {
+    $height: null;
+
+    @if $device == 'mobile' { $height: 100%; }
+    @else { $height: 95%; }
+
+    width: min(
+        map-get(
+            variables.$card-size,
+            #{$device},
+            width
+        ), 95%
+    );
+    height: min(
+        map-get(
+            variables.$card-size,
+            #{$device},
+            height
+        ), $height
+    );
+}

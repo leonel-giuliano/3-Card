@@ -1,0 +1,50 @@
+@use '../abstracts/variables' as variables;
+
+@font-face {
+    font-family: 'Lexend Deca';
+    font-display: swap;
+    src: local('Lexend Deca Regular'),
+        url('../../fonts/LexendDeca-VariableFont_wght.ttf')
+        format('ttf');
+    font-size: 100 900;
+}
+
+@font-face {
+    font-family: 'Big Shoulders Display';
+    font-display: swap;
+    src: local('Big Shoulders Display Thin'),
+        url('../../fonts/BigShouldersDisplay-VariableFont_wght.ttf')
+        format('ttf');
+    font-size: 100 900;
+}
+
+body,
+button {
+    font-family: map-get(
+        variables.$font,
+        family,
+        secondary
+    );
+    font-weight: map-get(
+        variables.$font,
+        weight,
+        regular
+    );
+}
+
+.title {
+    font-family: map-get(
+        variables.$font,
+        family,
+        primary
+    );
+    font-size: 2rem;
+    font-weight: map-get(
+        variables.$font,
+        weight,
+        bold
+    );
+    text-transform: uppercase;
+}
+
+.info { line-height: min(3.5ch, 150%); }

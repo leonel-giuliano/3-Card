@@ -1,0 +1,127 @@
+@use 'abstracts';
+@use 'base';
+
+@use 'sass:map';
+@use 'sass:list';
+
+html {
+    font-size: map-get(
+        abstracts.$font,
+        'size'
+    );
+}
+
+body {
+    position: relative;
+    display: grid;
+    place-items: center;
+    min-height: 100dvh;
+    height: 100%;
+    margin: abstracts.$mobile-body-margin 0;
+    background-color: map-get(
+        abstracts.$color,
+        neutral,
+        white
+    );
+
+    @include abstracts.media() { margin: 0 }
+}
+
+.card {
+    @include abstracts.device-card('mobile');
+
+    display: grid;
+    border-radius: .5rem;
+    overflow: hidden;
+
+    @include abstracts.media() {
+        @include abstracts.device-card('desktop');
+
+        grid-auto-flow: column;
+    }
+}
+
+.section {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 1rem 2rem;
+
+    @each $primary, $color in abstracts.$primary-loop {
+        $i: index(abstracts.$primary-loop, $primary $color);
+    
+        &-#{$i} { background-color: $color; }
+
+        .more-#{$i} {
+            color: $color;
+
+            &:hover {
+                color: map-get(
+                    abstracts.$color,
+                    neutral,
+                    gray
+                );
+                background-color: $color;
+            }
+        }
+    }
+
+    // &-3 { display: none; }
+
+    > * {
+        flex-grow: 1;
+        margin: .375rem;
+    }
+}
+
+.car-container,
+.more-container {
+    display: grid;
+    align-items: center;
+}
+
+.car { width: min-content; }
+
+.title {
+    color: map-get(
+        abstracts.$color,
+        neutral,
+        gray
+    );
+}
+
+.info {
+    color: map-get(
+        abstracts.$color,
+        neutral,
+        white
+    );
+}
+
+.more {
+    $gray: map-get(
+        abstracts.$color,
+        neutral,
+        gray
+    );
+
+    cursor: pointer;
+    width: max-content;
+    padding: .675rem 1.75rem;
+    background-color: $gray;
+    border: abstracts.rem(2px) solid $gray;
+    border-radius: 5rem;
+    transition-property: color, background-color;
+    transition-duration: .3s;
+}
+
+.attribution {
+    position: absolute;
+    bottom: - abstracts.$mobile-body-margin;
+    height: min-content;
+
+    @include abstracts.media() {
+        bottom: 0;
+        transform: translateY(-50%);
+    }
+}
